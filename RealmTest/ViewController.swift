@@ -67,6 +67,7 @@ class ViewController: UIViewController {
             let realm = try! Realm()
             let obj = realm.objects(RealmStudent.self).last!
             print(obj.name)
+            print(obj.age)
         } catch  {
             
         }
