@@ -15,9 +15,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         realmData.id = 1
         realmData.age = 20
-        realmData.name = "John Smith"
+        realmData.name = "John"
         self.save()
         self.read()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)//リレーションファイルの場所
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
             let realm = try! Realm()
             let data = realm.objects(RealmStudent.self).last!
             try realm.write {
-                data.name = "Mario Rossi" // 「Mario Rossi」という名前に更新します。
+//                data.name = "Mario Rossi" // 「Mario Rossi」という名前に更新します。
             }
         } catch {
             
@@ -69,7 +70,7 @@ class ViewController: UIViewController {
             print(obj.name)
             print(obj.age)
         } catch  {
-            
+            print("")
         }
     }
 }
