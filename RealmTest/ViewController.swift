@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         realmData.id = 1
         realmData.age = 20
         realmData.name = "John"
-        self.save()
+//        self.save()
         self.read()
         print(Realm.Configuration.defaultConfiguration.fileURL!)//リレーションファイルの場所
     }
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
                 realm.add(self.realmData)  // 作成した「realm」というインスタンスにrealmDataを書き込みます。
             }
         } catch {
-            
+            print("Exception error")
         }
     }
     
@@ -66,9 +66,10 @@ class ViewController: UIViewController {
     func read(){ //レコード取得
         do {
             let realm = try! Realm()
-            let obj = realm.objects(RealmStudent.self).last!
-            print(obj.name)
-            print(obj.age)
+//            let obj = realm.objects(RealmStudent.self).last!
+              let obj = realm.object(ofType: RealmStudent.self, forPrimaryKey: 1)
+            print(obj?.name)
+            print(obj?.age)
         } catch  {
             print("")
         }

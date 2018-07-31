@@ -13,4 +13,8 @@ class RealmStudent: Object {
     @objc dynamic var id : Int = 0;
     @objc dynamic var name = "";
     @objc dynamic var age: Int = 0;
+    // idをプライマリキーに設定
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
