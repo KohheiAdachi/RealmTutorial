@@ -26,11 +26,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func update(_ sender: Any) {
+        update()
+        
+    }
     // データを保存するための処理
     func save() {
         do {
             let realm = try Realm()  // Realmのインスタンスを作成します。
-            try realm.write {
+            try! realm.write {
                 realm.add(self.realmData)  // 作成した「realm」というインスタンスにrealmDataを書き込みます。
             }
         } catch {
@@ -42,9 +46,10 @@ class ViewController: UIViewController {
     func update() {
         do {
             let realm = try! Realm()
-            let data = realm.objects(RealmStudent.self).last!
-            try realm.write {
-//                data.name = "Mario Rossi" // 「Mario Rossi」という名前に更新します。
+            let obj = realm.object(ofType: RealmStudent.self, forPrimaryKey: 1)
+            try! realm.write {
+                obj?.name = "aaaaa"
+                print("udpate")
             }
         } catch {
             
@@ -67,13 +72,18 @@ class ViewController: UIViewController {
         do {
             let realm = try! Realm()
 //            let obj = realm.objects(RealmStudent.self).last!
-              let obj = realm.object(ofType: RealmStudent.self, forPrimaryKey: 1)
-            print(obj?.name)
-            print(obj?.age)
+            let obj = try? realm.object(ofType: RealmStudent.self, forPrimaryKey: 2)
+            print(obj??.name)
+            print(obj??.age)
+//            print(obj?.name)
+//            print(obj?.age)
         } catch  {
             print("")
         }
     }
+    
+    
+    
 }
     
 
