@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func update(_ sender: Any) {
-        update()
+        delete()
         
     }
     // データを保存するための処理
@@ -60,9 +60,9 @@ class ViewController: UIViewController {
     func delete() {
         do {
             let realm = try! Realm()
-            let data = realm.objects(RealmStudent.self).last!
+            let data = realm.object(ofType: RealmStudent.self, forPrimaryKey: 1)
             try realm.write {
-                realm.delete(data)  //「RealStudent」というモデルの中のデータを削除します。
+                realm.delete(data!)  //「RealStudent」というモデルの中のデータを削除します。
             }
         } catch {
             
