@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         realmData.age = 20
         realmData.name = "John"
 //        self.save()
-        self.read()
+//        self.read()
         print(Realm.Configuration.defaultConfiguration.fileURL!)//リレーションファイルの場所
     }
 
